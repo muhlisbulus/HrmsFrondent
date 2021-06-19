@@ -9,26 +9,29 @@ useEffect(() => {
    jobTitleService.getJobTitles().then((result)=>settitles(result.data.data));
 }, [])
     return (
-        <div>
-          <Table.Header>
-      <Table.Row>
-       
-        <Table.HeaderCell>Job Title Name</Table.HeaderCell>
-        
-      </Table.Row>
-    </Table.Header>
+      <div style={{position:"relative", overflowX:"hidden",overflowY:"auto",maxWidth:"250px", alignContent: "center", justifyContent: "center", marginTop: 10,fontFamily:"Poppins",fontWeight:"500",fontSize:"2" }}>
 
-    <Table.Body>
+      <Item.Group >
+          <div style={{display:"flex",alignItems:"center",alignContent:"center",marginTop:10,marginBottom:10,maxWidth:"250px",overflowX:"hidden",overflowY:"auto"}}>
+      <SearchInput  placeholder="Pozisyon Ara..." />
+      </div>
+        
+     
+        
+     
       {
-          titles.map((title) => (
-          <Table.Row key={title.id}>
-            <Table.Cell>{title.title}</Table.Cell>
+          titles.map((position) => (
+        
+         
+         
+            <Checkbox style={{marginTop:10}} key={position.id} label={position.title}  value={position.jobName} />
            
-          </Table.Row>))
+          ))
       }
       
     
-    </Table.Body>
+    
+    </Item.Group>
 
     </div>
 
