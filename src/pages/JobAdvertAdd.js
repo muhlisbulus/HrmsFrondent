@@ -7,7 +7,7 @@ import CityService from '../services/CityService'
 import WayWorkingService from '../services/WayWorkingService';
 import { Select, Button } from 'evergreen-ui';
 import * as Yup from 'yup';
-import { Form, Message, Label, Container, TextArea, Grid, Segment } from 'semantic-ui-react';
+import { Form, Message, Label, Container, TextArea, Grid, Segment,Image} from 'semantic-ui-react';
 import swal from 'sweetalert';
 import { } from 'formik-semantic-ui'
 
@@ -65,7 +65,7 @@ useEffect(() => {
                     minSalary: "",
                     endDate: "",
                     cityId: "",
-                    Id: "",
+                    jobTitleId: "",
                     wayOfWorkingId: "",
                     workTimeId: "",
                     employerId: ""
@@ -88,11 +88,13 @@ useEffect(() => {
                 }}
             >
                 {({ handleSubmit, handleChange, values, errors, handleBlur }) => (
-                    <Form style={{ background: "#f1f5f8", borderRadius: 20,position:"relative",alignItems:"center",display:"flex",flexDirection:"column"}} onSubmit={handleSubmit}>
-                        <Grid columns={1} >
-                            <Grid.Row>
-                                <Grid.Column stretched>
-                                    <Segment basic>
+                    <Segment basic stle={{width:"200px"}}>
+                    <Form style={{ background: "#f1f5f8", borderRadius: 30,position:"relative",align:"center",flexDirection:"column"}} onSubmit={handleSubmit}>
+                        
+                        <Image src='https://i.pinimg.com/564x/77/87/c7/7787c791932ac32b6125a7ca859ad503.jpg' size='large' />
+                        
+                        
+                                    
                                         <Form.Field>
                                             <TextArea rows={2} type="text"
                                                 name="description"
@@ -195,10 +197,9 @@ useEffect(() => {
                                                 </Label>
                                             }
                                         </Form.Field>
-                                    </Segment>
-                                </Grid.Column>
-                                <Grid.Column>
-                                    <Segment basic>
+                                    
+                               
+                                    
                                         <Form.Field>
                                             <Select
                                                 name="cityId"
@@ -230,11 +231,11 @@ useEffect(() => {
                                         </Form.Field>
                                         <Form.Field>
                                             <Select
-                                                name="jobId"
-                                                value={values.Id || ''}
+                                                name="jobTitleId"
+                                                value={values.jobTitleId || ''}
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
-                                                touched={values.Id}
+                                                touched={values.titleId}
                                                 style={{ display: 'block' }}
                                             >
                                                 <option placeholder="Pozisyon Seçiniz" defaultValue    >Pozisyon Seçiniz</option>
@@ -250,17 +251,15 @@ useEffect(() => {
 
                                             </Select>
                                             {
-                                                errors.Id &&
+                                                errors.jobTitleId &&
                                                 <Label basic color='red' pointing >
-                                                    {errors.Id}
+                                                    {errors.jobTitleId}
                                                 </Label>
                                             }
 
                                         </Form.Field>
-                                    </Segment>
-                                </Grid.Column>
-                                <Grid.Column stretched>
-                                    <Segment basic>
+                                    
+                               
                                         <Form.Field>
                                             <Select
                                                 name="wayOfWorkingId"
@@ -320,13 +319,11 @@ useEffect(() => {
 
 
                                         <Button   type="submit" color="blue">İlanı Kaydet</Button>
-                                    </Segment>
-                                </Grid.Column>
-                            </Grid.Row>
-                        </Grid>
+                              
                     </Form>
-
+                 </Segment>
                 )}
+                
             </Formik>
         </Container>
    
